@@ -3,6 +3,7 @@ var express = require("express");
 var path = require("path");
 
 
+
 // Sets up the Express App
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -17,19 +18,18 @@ var reservations = [
     reservationName: "first person",
     phoneNumber: "1324234234",
     email: "werwer@gmail.com",
-    uniqueID: "important"
+    uniqueID: 23
   }
 ];
 
 var waitingList = [
 
-
 ];
 
 //routing
-
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "index.html"));
+  
 });
 
 app.get("/make", function (req, res) {
@@ -44,6 +44,7 @@ app.get("/view", function (req, res) {
 app.get("/api/reservations", function (req, res) {
   return res.json(reservations);
 });
+
 
 //api's
 
@@ -72,8 +73,6 @@ app.post("/api/reservations", function (req, res) {
 
     waitingList.push(newReservation);
     res.json(newReservation);
-
-
   }
 });
 
