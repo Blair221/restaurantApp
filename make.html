@@ -1,17 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Make Your Reservation</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
+  <body>
+    <div class="container">
+      <div class="jumbotron text-center">
+        <h1 class="display-4">Make Your Reservation</h1>
+        <p class="lead">
+          There are currently only 5 tables in total, and we overbook so you may
+          not eat. Plan accordingly
+        </p>
+      </div>
 
-<body>
+      <form action="" class="form-inlin justify-content-center">
+        <div class="form-group">
+          <label id="reservationName" class="sr-only">First Name</label>
+          <input type="text" class="form-control" placeholder="VIP Eater" />
+        </div>
+        <div class="form-group">
+          <label id="email" class="sr-only">Email</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="fancyeater@tasty.com"
+          />
+        </div>
+        <div class="form-group">
+          <label id="phoneNumber" class="sr-only">Phone Number</label>
+          <input type="text" class="form-control" placeholder="602-555-5555" />
+        </div>
+        <div class="form-group">
+                <label id="uniqueID" class="sr-only">Unique ID</label>
+                <input type="text" class="form-control" placeholder="Enter a unique ID" />
+              </div>
+        <div class="col text-center">
+          <button
+            type="submit"
+            id="submitBtn"
+            class="btn btn-success text-center">
+            I Want to Eat NOW
+          </button>
+        </div>
+      </form>
+    </div>
 
-</body>
-
+    <script type="text/javascript">
+      $("#submitBtn").on("click", function() {
+        $.post(
+          "/api/reservations",
+          {
+            reservationName: "first",
+            phoneNumber: "1324234234",
+            email: "werwer@gmail.com",
+            uniqueID: "23"
+          },
+          function(data, status) {
+            alert("Data: " + data + "\nStatus: " + status);
+          }
+        );
+      });
+    </script>
+  </body>
 </html>
